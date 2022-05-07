@@ -8,7 +8,9 @@ def notas():
         for i in range(numeroMaterias):
             materia = input("Ingrese la materia: ")
             nota = float(input("Ingrese la nota: "))
-            aux = tuple((materia, nota))
+            while nota < 0 or nota > 5:
+                nota = float(input("Por favor ingrese una nota válida: "))
+            aux = tuple((materia.capitalize(), nota))
             resumen.append(aux)
         print("Sus respectivas notas en las siguientes materias fueron:",resumen)
         break
