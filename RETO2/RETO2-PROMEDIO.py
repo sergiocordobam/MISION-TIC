@@ -1,17 +1,32 @@
-def calcular_promedio_y_cuadro_de_honor(grupo: list):
+def calcular_promedio_y_cuadro_de_honor(grupo: list): 
     sumaNotas = 0 
+    notas = []
     cuadro_honor = {"1": [], "2": [], "3": [] }
     for estudiante in grupo:
         for key,value in estudiante.items():
             sumaNotas += estudiante["nota_fundamentos"]
-            if estudiante["nota_fundamentos"] == 5:
-                cuadro_honor["1"].append(estudiante["cédula"])
-            elif estudiante["nota_fundamentos"] >= 4 and estudiante["nota_fundamentos"] < 5:
-                cuadro_honor["2"].append(estudiante["cédula"])
-            else:
-                if estudiante["nota_fundamentos"] >= 3 and estudiante["nota_fundamentos"] < 4:
-                    cuadro_honor["3"].append(estudiante["cédula"])
+            notas.append((estudiante["nota_fundamentos"], estudiante["cédula"]))
             break
+
+    maximo = max(notas)
+    for estudiante in grupo:
+        if maximo[0] == estudiante["nota_fundamentos"]:
+            cuadro_honor["1"].append(estudiante["cédula"])
+            notas.remove((estudiante["nota_fundamentos"], estudiante["cédula"]))
+            
+            
+    maximo = max(notas)
+    for estudiante in grupo:
+        if maximo[0] == estudiante["nota_fundamentos"]:
+            cuadro_honor["2"].append(estudiante["cédula"])
+            notas.remove((estudiante["nota_fundamentos"], estudiante["cédula"]))
+            
+    maximo = max(notas)         
+    for estudiante in grupo:
+        if maximo[0] == estudiante["nota_fundamentos"]:
+            cuadro_honor["3"].append(estudiante["cédula"])
+            notas.remove((estudiante["nota_fundamentos"], estudiante["cédula"]))
+
     promedio = (sumaNotas/len(grupo))
     return promedio, cuadro_honor
     
