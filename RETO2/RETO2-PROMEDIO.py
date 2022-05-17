@@ -1,7 +1,7 @@
-def calcular_promedio_y_cuadro_de_honor(grupo: list): 
+def calcular_promedio_y_cuadro_honor(grupo): 
     sumaNotas = 0 
     notas = []
-    cuadro_honor = {"1": [], "2": [], "3": [] }
+    cuadro_honor = {1: [], 2: [], 3: [] }
     for estudiante in grupo:
         for key,value in estudiante.items():
             sumaNotas += estudiante["nota_fundamentos"]
@@ -11,20 +11,19 @@ def calcular_promedio_y_cuadro_de_honor(grupo: list):
     maximo = max(notas)
     for estudiante in grupo:
         if maximo[0] == estudiante["nota_fundamentos"]:
-            cuadro_honor["1"].append(estudiante["cédula"])
+            cuadro_honor[1].append(estudiante["cédula"])
             notas.remove((estudiante["nota_fundamentos"], estudiante["cédula"]))
-            
-            
+                    
     maximo = max(notas)
     for estudiante in grupo:
         if maximo[0] == estudiante["nota_fundamentos"]:
-            cuadro_honor["2"].append(estudiante["cédula"])
+            cuadro_honor[2].append(estudiante["cédula"])
             notas.remove((estudiante["nota_fundamentos"], estudiante["cédula"]))
             
     maximo = max(notas)         
     for estudiante in grupo:
         if maximo[0] == estudiante["nota_fundamentos"]:
-            cuadro_honor["3"].append(estudiante["cédula"])
+            cuadro_honor[3].append(estudiante["cédula"])
             notas.remove((estudiante["nota_fundamentos"], estudiante["cédula"]))
 
     promedio = (sumaNotas/len(grupo))
@@ -51,12 +50,35 @@ estudiante3 = {
 }
 
 estudiante4 = {
-    "cédula":"11111111",
-    "nombre": "Pancho",
-    "nota_fundamentos": 4
+    "cédula":"32276123",
+    "nombre": "Rita",
+    "nota_fundamentos": 4.7
 }
-grupo = [estudiante1, estudiante2, estudiante3, estudiante4]
-print(calcular_promedio_y_cuadro_de_honor(grupo))
 
-    
+estudiante5 = {
+    "cédula":"1036765245",
+    "nombre": "Anita",
+    "nota_fundamentos": 4.7
+}
 
+estudiante6 = {
+    "cédula":"89122456",
+    "nombre": "Pedrito",
+    "nota_fundamentos": 4.7
+}
+
+estudiante7 = {
+    "cédula":"289765",
+    "nombre": "Mat",
+    "nota_fundamentos": 4.8
+}
+
+estudiante8 = {
+    "cédula":"4576890",
+    "nombre": "Dan",
+    "nota_fundamentos": 4.8
+}
+grupo = [estudiante1, estudiante2, estudiante3, estudiante4, estudiante5, estudiante6, estudiante7
+, estudiante8]
+
+print(calcular_promedio_y_cuadro_honor(grupo))
